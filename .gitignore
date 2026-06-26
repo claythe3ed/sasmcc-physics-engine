@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+
+# Outputs
+02_simulations/outputs/*.png
+02_simulations/outputs/*.jpg
+
+# Personal
+knowledge_graph_data.json
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb
+
+# Env
+.env
+venv/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+06_logs/
