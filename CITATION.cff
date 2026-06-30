@@ -1,0 +1,45 @@
+cff-version: 1.2.0
+message: "If you use this physics engine, please cite it as below."
+type: software
+title: "S-ASM-CC Sonoluminescence Physics Engine"
+abstract: >
+  A six-layer first-principles acoustic cavitation physics engine for
+  selective cancer cell destruction via low-intensity pulsed ultrasound.
+  Nine cancer types. Validated against published experimental data.
+  Dedicated to Ali Sayed Muhammad Osman (1957-2022).
+authors:
+  - family-names: "Clay"
+    given-names: ""
+    country: SD
+version: "5.3"
+date-released: "2026-06-25"
+license: MIT
+repository-code: "https://github.com/claythe3ed/sasmcc-physics-engine"
+keywords:
+  - oncotripsy
+  - sonoluminescence
+  - acoustic cavitation
+  - cancer therapy
+  - selective ablation
+  - low-intensity pulsed ultrasound
+  - biophysics
+  - open source
+references:
+  - type: article
+    title: "Selective Ablation of Cancer Cells with Low Intensity Pulsed Ultrasound"
+    authors:
+      - family-names: Mittelstein
+        given-names: "David R."
+    journal: "Applied Physics Letters"
+    volume: 116
+    year: 2020
+    doi: "10.1063/1.5128627"
+  - type: article
+    title: "Nanomechanical analysis of cells from cancer patients"
+    authors:
+      - family-names: Cross
+        given-names: "Sarah E."
+    journal: "Nature Nanotechnology"
+    volume: 2
+    year: 2007
+    doi: "10.1038/nnano.2007.388"
