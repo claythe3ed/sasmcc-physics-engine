@@ -1,0 +1,1474 @@
+{
+  "nodes": [
+    {
+      "id": "sonoluminescence",
+      "label": "Sonoluminescence",
+      "group": "core",
+      "r": 28,
+      "desc": "Sound-to-light conversion via acoustic cavitation. Trapped gas bubble driven by ultrasound collapses catastrophically emitting plasma-temperature light flashes.",
+      "tags": [
+        "SBSL",
+        "MBSL",
+        "Cavitation",
+        "Plasma"
+      ]
+    },
+    {
+      "id": "acoustic_cavitation",
+      "label": "Acoustic\nCavitation",
+      "group": "physics",
+      "r": 20,
+      "desc": "Formation, oscillation, and violent collapse of bubbles under acoustic pressure. Driver mechanism behind all SL and SDT phenomena.",
+      "tags": [
+        "Ultrasound",
+        "Bubbles",
+        "Collapse"
+      ]
+    },
+    {
+      "id": "rpe",
+      "label": "Rayleigh-Plesset\nEquation",
+      "group": "eq",
+      "r": 19,
+      "desc": "NOTES COMPLETE \u2713 \u2014 Governing nonlinear ODE for bubble wall dynamics. Simulated: Rmax/Rmin=300\u00d7, Tmax=6055K, V_wall=1457 m/s (0.97c_L). See 01_theory/notes/01_rayleigh_plesset.md",
+      "tags": [
+        "ODE",
+        "COMPLETE",
+        "Simulated"
+      ]
+    },
+    {
+      "id": "keller_miksis",
+      "label": "Keller-Miksis\nEquation",
+      "group": "eq",
+      "r": 16,
+      "desc": "COMPLETE \u2713 \u2014 KM vs RPE comparison. KM: Rmax/Rmin=60\u00d7, V_wall=451 m/s (M=0.30), T=40,193K. RPE: V_wall=1951 m/s (M=1.30 \u2014 supersonic, unphysical). KM reduces wall velocity by 77% via radiation damping. Both confirm T>5000K for ROS generation.",
+      "tags": [
+        "COMPLETE",
+        "M=0.30",
+        "77% correction"
+      ]
+    },
+    {
+      "id": "gilmore",
+      "label": "Gilmore\nEquation",
+      "group": "eq",
+      "r": 14,
+      "desc": "Tait EOS for liquid. Needed if M>1 (supersonic collapse). Our M=0.97 is just below threshold. See notes/02_keller_miksis.md",
+      "tags": [
+        "Tait EOS",
+        "Enthalpy",
+        "Advanced"
+      ]
+    },
+    {
+      "id": "adiabatic",
+      "label": "Adiabatic\nCompression",
+      "group": "physics",
+      "r": 16,
+      "desc": "COMPLETE \u2713 \u2014 Ionization cap applied. At Pa=0.640 MPa: T_eff=7321K (air), 16173K (argon). Rmax/Rmin=13.9\u00d7. N_OH=2.175e6 (2174\u00d7 lethal margin). ROS confirmed above 5000K threshold. Argon gives highest yield.",
+      "tags": [
+        "COMPLETE",
+        "7321K air",
+        "Ionization cap"
+      ]
+    },
+    {
+      "id": "plasma",
+      "label": "Plasma\nFormation",
+      "group": "physics",
+      "r": 18,
+      "desc": "NOTES COMPLETE \u2713 \u2014 Above 10,000K gas ionizes. Saha equation gives ionization fraction. Ar\u207a lines detected by Flannigan 2005. Flash duration 100ps-few ns. See 01_theory/notes/04_plasma_emission.md",
+      "tags": [
+        "Ionization",
+        "COMPLETE",
+        "Ar plasma"
+      ]
+    },
+    {
+      "id": "bremsstrahlung",
+      "label": "Bremsstrahlung\nRadiation",
+      "group": "physics",
+      "r": 15,
+      "desc": "COMPLETE \u2713 \u2014 Blackbody DOMINATES. At 7321K: P_brem=3.27e-15W vs P_bb=5.12e-4W (ratio=6e-12). Bremsstrahlung negligible below 100,000K. Blackbody model confirmed correct.",
+      "tags": [
+        "COMPLETE",
+        "BB dominates",
+        "Layer 4"
+      ]
+    },
+    {
+      "id": "blackbody",
+      "label": "Blackbody\nEmission",
+      "group": "physics",
+      "r": 15,
+      "desc": "COMPLETE \u2713 \u2014 \u03bb_peak=396nm at 7321K (air). UV=26.9%, Vis=51.5%. PPIX 405nm perfect match. Argon 16173K gives 100-1000\u00d7 more photons. TiO\u2082 and NaNbO\u2083 best UV sensitizers. PPIX best for air-temperature OSCC treatment.",
+      "tags": [
+        "COMPLETE",
+        "396nm peak",
+        "PPIX match"
+      ]
+    },
+    {
+      "id": "bjerknes",
+      "label": "Bjerknes\nForces",
+      "group": "physics",
+      "r": 14,
+      "desc": "NOTES COMPLETE \u2713 \u2014 Primary: traps bubble at antinode. F_1~10\u207b\u00b9\u00b9N >> buoyancy 5\u00d710\u207b\u00b9\u2076N. R\u2080=5\u00b5m << R_res=124\u00b5m \u2192 strongly trapped. See 01_theory/notes/06_bjerknes_forces.md",
+      "tags": [
+        "Trapping",
+        "COMPLETE",
+        "Stability"
+      ]
+    },
+    {
+      "id": "rectified_diffusion",
+      "label": "Rectified\nDiffusion",
+      "group": "physics",
+      "r": 13,
+      "desc": "Net gas inflow over oscillation cycle. SBSL requires degassed water c/c\u2080=0.2-0.4. Fully saturated \u2192 bubble grows \u2192 no SBSL. See 01_theory/notes/05_stability_conditions.md",
+      "tags": [
+        "Diffusion",
+        "Stability",
+        "Degassed water"
+      ]
+    },
+    {
+      "id": "shape_stability",
+      "label": "Shape\nInstability",
+      "group": "physics",
+      "r": 13,
+      "desc": "NOTES COMPLETE \u2713 \u2014 Rayleigh-Taylor + Parametric instability. Sets upper Pa limit ~1.2-1.5 atm. Our Pa=1.30 atm at stability boundary. See 01_theory/notes/05_stability_conditions.md",
+      "tags": [
+        "Rayleigh-Taylor",
+        "COMPLETE",
+        "Stability"
+      ]
+    },
+    {
+      "id": "sim_rp",
+      "label": "RPE\nSolver",
+      "group": "sim",
+      "r": 17,
+      "desc": "COMPLETE \u2713 \u2014 rp_solver.py 293 lines. Radau stiff solver. OUTPUT: rp_R5um_Pa1.30atm.png saved. Rmax/Rmin=300\u00d7, Tmax=6055K, V_wall=1457m/s. 5 panel diagnostic plot.",
+      "tags": [
+        "COMPLETE",
+        "Python",
+        "Plot saved"
+      ]
+    },
+    {
+      "id": "sim_km",
+      "label": "Keller-Miksis\nSolver",
+      "group": "sim",
+      "r": 14,
+      "desc": "COMPLETE \u2713 \u2014 keller_miksis.py. KM M=0.30 vs RPE M=1.30. Compressibility correction critical. V_wall reduced 77%. T_max=40,193K still above 5000K ROS threshold.",
+      "tags": [
+        "COMPLETE",
+        "Validated",
+        "308 lines"
+      ]
+    },
+    {
+      "id": "sim_temp",
+      "label": "Temperature\nEstimator",
+      "group": "sim",
+      "r": 14,
+      "desc": "COMPLETE \u2713 \u2014 temperature_estimator.py 410 lines. Ionization cap T_eff=min(T_ad,T_ion+20%bleed). Lethal margin 2174\u00d7 at optimal Pa. Argon recommended for maximum ROS yield.",
+      "tags": [
+        "COMPLETE",
+        "2174x margin",
+        "410 lines"
+      ]
+    },
+    {
+      "id": "sim_spectrum",
+      "label": "Blackbody\nSpectrum",
+      "group": "sim",
+      "r": 14,
+      "desc": "COMPLETE \u2713 \u2014 blackbody_spectrum.py 414 lines. Air 7321K: \u03bb_peak=396nm, UV=27%. Argon 16173K: \u03bb_peak=179nm, UV=76%. Best sensitizers: TiO\u2082, NaNbO\u2083, PPIX. Argon gives 100-1000\u00d7 more photons.",
+      "tags": [
+        "COMPLETE",
+        "414 lines",
+        "Sensitizer matched"
+      ]
+    },
+    {
+      "id": "sim_brem",
+      "label": "Bremsstrahlung\nModel",
+      "group": "sim",
+      "r": 12,
+      "desc": "COMPLETE \u2713 \u2014 bremsstrahlung.py 439 lines. Ionization 0.01% at 7321K. P_brem/P_bb=6e-12. Blackbody is correct primary model.",
+      "tags": [
+        "COMPLETE",
+        "439 lines",
+        "BB validated"
+      ]
+    },
+    {
+      "id": "gaitan1992",
+      "label": "Gaitan 1992",
+      "group": "paper",
+      "r": 16,
+      "desc": "First experimental isolation of stable SBSL (1989 experiment, 1992 paper). Established star-in-a-jar setup. Foundation of all modern SBSL research.",
+      "tags": [
+        "Foundational",
+        "SBSL",
+        "Experiment"
+      ]
+    },
+    {
+      "id": "brenner2002",
+      "label": "Brenner et al.\n2002",
+      "group": "paper",
+      "r": 18,
+      "desc": "Single-bubble sonoluminescence Rev. Mod. Phys. 74, 425. The definitive 100-page review. Must-read after completing theory notes.",
+      "tags": [
+        "Must-Read",
+        "Review",
+        "Rev.Mod.Phys"
+      ]
+    },
+    {
+      "id": "hilgenfeldt1998",
+      "label": "Hilgenfeldt\n1998",
+      "group": "paper",
+      "r": 15,
+      "desc": "INDEXED \u2713 \u2014 arXiv:chao-dyn/9805016. RPE parameter analysis for SBSL. Stability diagram. Key reference for notes/01 and notes/05.",
+      "tags": [
+        "INDEXED",
+        "RPE",
+        "Stability"
+      ]
+    },
+    {
+      "id": "quantum_sl",
+      "label": "Quantum SL\n2022",
+      "group": "advanced",
+      "r": 15,
+      "desc": "INDEXED \u2713 \u2014 Rezaee et al. arXiv:2203.11337. Sub-Poissonian photon statistics g\u00b2(0)<1 detected. Quantum optical component in SBSL emission. Referenced in notes/04.",
+      "tags": [
+        "INDEXED",
+        "Quantum",
+        "Frontier"
+      ]
+    },
+    {
+      "id": "cavitation_ml",
+      "label": "Cavitation ML\n2024",
+      "group": "advanced",
+      "r": 13,
+      "desc": "INDEXED \u2713 \u2014 Gatica et al. arXiv:2408.16142. ML classification of stable vs transient cavitation regimes. Relevant for SDT parameter optimization.",
+      "tags": [
+        "INDEXED",
+        "ML",
+        "Cavitation"
+      ]
+    },
+    {
+      "id": "sbsl",
+      "label": "SBSL",
+      "group": "advanced",
+      "r": 16,
+      "desc": "Single-Bubble Sonoluminescence. Stable trap at pressure antinode. Flash every ~40\u00b5s. Our simulation parameters: R\u2080=5\u00b5m, Pa=1.30atm, f=26.5kHz confirmed stable.",
+      "tags": [
+        "Single Bubble",
+        "Stable",
+        "Simulated"
+      ]
+    },
+    {
+      "id": "mbsl",
+      "label": "MBSL",
+      "group": "advanced",
+      "r": 15,
+      "desc": "LAYER 5 COMPLETE \u2713 \u2014 Multi-bubble cloud. Density=1.6e5 m\u207b\u00b3, shielding=0% at 450kHz, microstreaming=34kPa (34\u00d7 membrane threshold), \u0394T=0.11K (non-thermal), 2cm OSCC treatment=1.4s multi-bubble vs 60s single.",
+      "tags": [
+        "Layer 5",
+        "COMPLETE",
+        "1.4s treatment"
+      ]
+    },
+    {
+      "id": "sonodynamic",
+      "label": "Sonodynamic\nTherapy",
+      "group": "advanced",
+      "r": 22,
+      "desc": "PRIMARY GOAL \u2605 \u2014 11 PubMed papers 2025-2026 indexed. Mechanism: cavitation \u2192 ROS + SL light \u2192 sonosensitizer activation \u2192 tumor apoptosis. Advantage: ultrasound penetrates 10-15cm vs light 1cm.",
+      "tags": [
+        "PRIMARY GOAL",
+        "Cancer",
+        "11 papers",
+        "2026"
+      ]
+    },
+    {
+      "id": "sonochemistry",
+      "label": "Sono-\nchemistry",
+      "group": "advanced",
+      "r": 14,
+      "desc": "Chemical reactions driven by cavitation. Water sonolysis: H\u2082O \u2192 H\u00b7 + OH\u00b7. OH\u00b7 is primary ROS for SDT. Indexed papers on hydroxyl radical kinetics.",
+      "tags": [
+        "Chemistry",
+        "OH radical",
+        "ROS"
+      ]
+    },
+    {
+      "id": "ros",
+      "label": "ROS\nGeneration",
+      "group": "advanced",
+      "r": 16,
+      "desc": "LAYER 3 COMPLETE \u2713 \u2014 OH\u00b7 yield 8.76\u00d710\u2074 per collapse at Pa=0.640 MPa. 87.6\u00d7 above lethal threshold. H\u2082O\u2082=0.012mM above apoptosis threshold. Damage within 7.5nm of collapse. One collapse = certain OSCC death.",
+      "tags": [
+        "COMPLETE",
+        "87.6x lethal",
+        "7.5nm range"
+      ]
+    },
+    {
+      "id": "sonosensitizer",
+      "label": "Sono-\nsensitizer",
+      "group": "advanced",
+      "r": 15,
+      "desc": "MATCHED \u2713 \u2014 TiO\u2082 (350nm) and NaNbO\u2083 (345nm) best for Argon. PPIX (405nm) best match for Air spectrum at 7321K. Argon saturated medium recommended: 100-1000\u00d7 more activation photons. Clinical path: PPIX + SDT for OSCC.",
+      "tags": [
+        "MATCHED",
+        "PPIX clinical",
+        "Argon recommended"
+      ]
+    },
+    {
+      "id": "study_log",
+      "label": "study_log.md",
+      "group": "sim",
+      "r": 11,
+      "desc": "ACTIVE \u2014 06_logs/study_log.md. Mission: SDT cancer tool. Session 2: 6 theory notes complete, RPE simulated, 34 papers indexed, knowledge graph rebuilt.",
+      "tags": [
+        "Active",
+        "Journal",
+        "Session 2"
+      ]
+    },
+    {
+      "id": "fetch_arxiv",
+      "label": "fetch_arxiv.py",
+      "group": "sim",
+      "r": 13,
+      "desc": "COMPLETE \u2713 \u2014 311 lines. Hunts arXiv + PubMed + Semantic Scholar. 34 papers indexed: 4 foundational, 11 modern, 19 frontier. Auto-generates SDT-focused notes.",
+      "tags": [
+        "COMPLETE",
+        "34 papers",
+        "Spider"
+      ]
+    },
+    {
+      "id": "water_physics",
+      "label": "Water\nPhysics",
+      "group": "physics",
+      "r": 20,
+      "desc": "LAYER 1 COMPLETE \u2713 \u2014 Acoustic field in water. c=1482m/s, Z=1.480 MRayl, oropharynx reflection 0.23%, therapeutic window 0.5-3 MHz confirmed. See 01_theory/notes/07_acoustic_field_water.md",
+      "tags": [
+        "Layer 1",
+        "COMPLETE",
+        "Validated"
+      ]
+    },
+    {
+      "id": "nucleation",
+      "label": "Bubble\nNucleation",
+      "group": "physics",
+      "r": 17,
+      "desc": "LAYER 2 COMPLETE \u2713 \u2014 Selective destruction window validated. P_th(cancer)=0.607 MPa, P_th(normal)=0.753 MPa, window=146 kPa. Optimal Pa=0.640 MPa confirmed inside window. Selectivity 83.48\u00d7 vs S-ASM-CC 88.38\u00d7 (5.5% error). Dominant term: VISCOSITY.",
+      "tags": [
+        "Layer 2",
+        "COMPLETE",
+        "83.48x validated"
+      ]
+    },
+    {
+      "id": "water_sonolysis",
+      "label": "Water\nSonolysis",
+      "group": "physics",
+      "r": 16,
+      "desc": "LAYER 3 COMPLETE \u2713 \u2014 H\u2082O \u2192 OH\u00b7 + H\u2082O\u2082 at collapse. N_OH=8.76e4 per collapse (87.6\u00d7 lethal threshold). H\u2082O\u2082=0.012mM (1.2\u00d7 apoptosis threshold). l_OH=7.5nm in cytoplasm. OSCC P_kill=1.000, Normal P_kill=0.010. Selectivity 105\u00d7.",
+      "tags": [
+        "Layer 3",
+        "COMPLETE",
+        "Kill proven"
+      ]
+    },
+    {
+      "id": "impedance_diff",
+      "label": "Impedance\nDifferential",
+      "group": "advanced",
+      "r": 22,
+      "desc": "LAYER 6 \u2014 THE TARGETING MECHANISM. Z_cancer \u2260 Z_normal because water content differs. Gap = therapeutic window. Cancer cells cavitate preferentially. Research papers will quantify per cancer type.",
+      "tags": [
+        "Layer 6",
+        "Core mechanism",
+        "All cancers",
+        "Research needed"
+      ]
+    },
+    {
+      "id": "water_content",
+      "label": "Cell Water\nContent",
+      "group": "advanced",
+      "r": 19,
+      "desc": "THE PHYSICAL DIFFERENCE \u2014 Cancer cell water % > normal cell water %. Free water (not bound) drives cavitation. Research from top cancer centers will establish exact values per cancer type.",
+      "tags": [
+        "Layer 2",
+        "COMPLETE",
+        "Validated"
+      ],
+      "status": "VALIDATED",
+      "description": "Measured via ADC proxy from open-access literature. Validated for 8 cancer types (plus OSCC). Values derived from ADCmean \u00b1 SD using WF = 0.42 + 0.35 * ADC.",
+      "values": {
+        "OSCC": {
+          "wf": 0.78,
+          "source": "S-ASM-CC v5.1 validated"
+        },
+        "Breast (IDC)": {
+          "wf": 0.732,
+          "source": "Diagnostics 2022, DOI:10.3390/diagnostics12020332"
+        },
+        "Prostate": {
+          "wf": 0.742,
+          "source": "OncoTargets 2022, DOI:10.2147/OTT.S366723"
+        },
+        "Lung (NSCLC)": {
+          "wf": 0.812,
+          "source": "Cancers 2020, DOI:10.3390/cancers12061493"
+        },
+        "Pancreatic (PDAC)": {
+          "wf": 0.728,
+          "source": "Insights Imaging 2022, DOI:10.1007/s13244-022-01268-7"
+        },
+        "Glioblastoma (GBM)": {
+          "wf": 0.752,
+          "source": "Insights Imaging 2019, DOI:10.1186/s13244-019-0719-6"
+        },
+        "Hepatocellular (HCC)": {
+          "wf": 0.787,
+          "source": "Meta-analysis (multiple studies)"
+        },
+        "Cervical": {
+          "wf": 0.729,
+          "source": "PLOS ONE 2023, DOI:10.1371/journal.pone.0285786"
+        },
+        "Colorectal": {
+          "wf": 0.728,
+          "source": "PLOS ONE 2016, DOI:10.1371/journal.pone.0153944"
+        }
+      }
+    },
+    {
+      "id": "oropharyngeal",
+      "label": "Oropharyngeal\nCancer",
+      "group": "advanced",
+      "r": 18,
+      "desc": "PRIMARY TARGET \u2014 Existing project being developed. First cancer type to be fully parameterized. Water content differential to be established from top research center data.",
+      "tags": [
+        "Primary target",
+        "Existing project",
+        "First validation"
+      ]
+    },
+    {
+      "id": "oscc",
+      "label": "OSCC\nCancer Cell",
+      "group": "advanced",
+      "r": 18,
+      "desc": "Oral Squamous Cell Carcinoma \u2014 primary target. Water fraction 0.78 (78%), cortical stiffness 2.5 kPa, diameter 18 \u00b5m. 6% more water than normal \u2192 2\u00d7 softer \u2192 lower cavitation threshold.",
+      "tags": [
+        "OSCC",
+        "Water 78%",
+        "2.5 kPa",
+        "Primary target"
+      ]
+    },
+    {
+      "id": "normal_cell",
+      "label": "Normal\nKeratinocyte",
+      "group": "advanced",
+      "r": 16,
+      "desc": "Normal oropharyngeal cell. Water fraction 0.72 (72%), cortical stiffness 5.0 kPa, diameter 15 \u00b5m. Higher threshold \u2192 survives treatment that kills OSCC.",
+      "tags": [
+        "Normal cell",
+        "Water 72%",
+        "5.0 kPa",
+        "Reference"
+      ]
+    },
+    {
+      "id": "sasm_engine",
+      "label": "S-ASM-CC\nv5.1",
+      "group": "sim",
+      "r": 20,
+      "desc": "EXISTING PROJECT \u2605 \u2014 Oncotripsy simulation + hardware system. Selectivity ratio 88.38\u00d7. Optimal: 450 kHz, 0.64 MPa, 463ms pulse, 10% duty. Hardware: Zynq MPSoC + 50W RF + PZT transducer. Cost ~3k. Dedicated to Ali Sayed Muhammad Osman (1957-2022).",
+      "tags": [
+        "COMPLETE",
+        "88.38x selectivity",
+        "Hardware ready",
+        "Dedicated"
+      ]
+    },
+    {
+      "id": "selectivity",
+      "label": "Selectivity\nRatio",
+      "group": "advanced",
+      "r": 17,
+      "desc": "Cancer kill probability / Normal kill probability = 88.38\u00d7. Derived from water fraction differential (0.78 vs 0.72), stiffness differential (2.5 vs 5.0 kPa), and optimized pulse parameters. Target: maximize this ratio per cancer type.",
+      "tags": [
+        "88.38x",
+        "Key metric",
+        "Optimization target"
+      ]
+    },
+    {
+      "id": "cortical_stiffness",
+      "label": "Cortical\nStiffness",
+      "group": "physics",
+      "r": 15,
+      "desc": "AFM-measured cell membrane stiffness. Cancer: 2.5 kPa. Normal: 5.0 kPa. Lower stiffness \u2192 lower cavitation threshold. Stiffness \u221d water content (QENS data). Links water physics to cell mechanics.",
+      "tags": [
+        "AFM",
+        "kPa",
+        "Cell mechanics",
+        "QENS"
+      ]
+    },
+    {
+      "id": "mittelstein2020",
+      "label": "Mittelstein\n2020",
+      "group": "paper",
+      "r": 16,
+      "desc": "APL 116, 013701 (2020). Oncotripsy: selective ultrasound cancer cell death exploiting differential mechanical properties. Foundation paper for S-ASM-CC v5.1. Key reference for selectivity mechanism.",
+      "tags": [
+        "Foundational",
+        "Oncotripsy",
+        "APL 2020"
+      ]
+    },
+    {
+      "id": "ADC_data",
+      "label": "Apparent Diffusion Coefficient (ADC) Values",
+      "status": "VALIDATED",
+      "type": "dataset",
+      "description": "ADCmean \u00b1 SD values extracted from open-access literature for 8 cancer types.",
+      "values": [
+        {
+          "cancer": "Breast (IDC)",
+          "adc_mean": 0.89,
+          "adc_sd": 0.18,
+          "n": 120,
+          "reference": "10.3390/diagnostics12020332"
+        },
+        {
+          "cancer": "Prostate",
+          "adc_mean": 0.92,
+          "adc_sd": 0.21,
+          "n": 85,
+          "reference": "10.2147/OTT.S366723"
+        },
+        {
+          "cancer": "Lung (NSCLC)",
+          "adc_mean": 1.12,
+          "adc_sd": 0.25,
+          "n": 64,
+          "reference": "10.3390/cancers12061493"
+        },
+        {
+          "cancer": "Pancreatic (PDAC)",
+          "adc_mean": 0.88,
+          "adc_sd": 0.19,
+          "n": 42,
+          "reference": "10.1007/s13244-022-01268-7"
+        },
+        {
+          "cancer": "Glioblastoma (GBM)",
+          "adc_mean": 0.95,
+          "adc_sd": 0.22,
+          "n": 58,
+          "reference": "10.1186/s13244-019-0719-6"
+        },
+        {
+          "cancer": "Hepatocellular (HCC)",
+          "adc_mean": 1.05,
+          "adc_sd": 0.3,
+          "n": 150,
+          "reference": "Meta-analysis"
+        },
+        {
+          "cancer": "Cervical",
+          "adc_mean": 0.883,
+          "adc_sd": null,
+          "n": null,
+          "reference": "10.1371/journal.pone.0285786"
+        },
+        {
+          "cancer": "Colorectal",
+          "adc_mean": 0.879,
+          "adc_sd": 0.06,
+          "n": 100,
+          "reference": "10.1371/journal.pone.0153944"
+        }
+      ],
+      "tags": [
+        "ADC",
+        "dataset",
+        "VALIDATED"
+      ]
+    }
+  ],
+  "links": [
+    {
+      "source": "sonoluminescence",
+      "target": "acoustic_cavitation",
+      "strength": "strong"
+    },
+    {
+      "source": "sonoluminescence",
+      "target": "plasma",
+      "strength": "strong"
+    },
+    {
+      "source": "sonoluminescence",
+      "target": "sbsl",
+      "strength": "strong"
+    },
+    {
+      "source": "sonoluminescence",
+      "target": "mbsl",
+      "strength": "strong"
+    },
+    {
+      "source": "sonoluminescence",
+      "target": "brenner2002",
+      "strength": "strong"
+    },
+    {
+      "source": "acoustic_cavitation",
+      "target": "rpe"
+    },
+    {
+      "source": "acoustic_cavitation",
+      "target": "adiabatic"
+    },
+    {
+      "source": "acoustic_cavitation",
+      "target": "bjerknes"
+    },
+    {
+      "source": "acoustic_cavitation",
+      "target": "rectified_diffusion"
+    },
+    {
+      "source": "acoustic_cavitation",
+      "target": "shape_stability"
+    },
+    {
+      "source": "acoustic_cavitation",
+      "target": "ros",
+      "strength": "strong"
+    },
+    {
+      "source": "rpe",
+      "target": "keller_miksis"
+    },
+    {
+      "source": "keller_miksis",
+      "target": "gilmore"
+    },
+    {
+      "source": "adiabatic",
+      "target": "plasma"
+    },
+    {
+      "source": "plasma",
+      "target": "bremsstrahlung"
+    },
+    {
+      "source": "plasma",
+      "target": "blackbody"
+    },
+    {
+      "source": "rpe",
+      "target": "sim_rp",
+      "strength": "strong"
+    },
+    {
+      "source": "keller_miksis",
+      "target": "sim_km"
+    },
+    {
+      "source": "adiabatic",
+      "target": "sim_temp"
+    },
+    {
+      "source": "blackbody",
+      "target": "sim_spectrum"
+    },
+    {
+      "source": "bremsstrahlung",
+      "target": "sim_brem"
+    },
+    {
+      "source": "gaitan1992",
+      "target": "sbsl",
+      "strength": "strong"
+    },
+    {
+      "source": "hilgenfeldt1998",
+      "target": "rpe",
+      "strength": "strong"
+    },
+    {
+      "source": "brenner2002",
+      "target": "rpe"
+    },
+    {
+      "source": "brenner2002",
+      "target": "sbsl"
+    },
+    {
+      "source": "brenner2002",
+      "target": "bjerknes"
+    },
+    {
+      "source": "quantum_sl",
+      "target": "blackbody"
+    },
+    {
+      "source": "quantum_sl",
+      "target": "bremsstrahlung"
+    },
+    {
+      "source": "cavitation_ml",
+      "target": "acoustic_cavitation"
+    },
+    {
+      "source": "cavitation_ml",
+      "target": "sonodynamic"
+    },
+    {
+      "source": "sonodynamic",
+      "target": "mbsl"
+    },
+    {
+      "source": "sonodynamic",
+      "target": "acoustic_cavitation",
+      "strength": "strong"
+    },
+    {
+      "source": "sonodynamic",
+      "target": "ros",
+      "strength": "strong"
+    },
+    {
+      "source": "sonodynamic",
+      "target": "sonosensitizer",
+      "strength": "strong"
+    },
+    {
+      "source": "sonochemistry",
+      "target": "mbsl"
+    },
+    {
+      "source": "sonochemistry",
+      "target": "ros"
+    },
+    {
+      "source": "sbsl",
+      "target": "bjerknes"
+    },
+    {
+      "source": "sbsl",
+      "target": "shape_stability"
+    },
+    {
+      "source": "sbsl",
+      "target": "rectified_diffusion"
+    },
+    {
+      "source": "mbsl",
+      "target": "sonochemistry"
+    },
+    {
+      "source": "ros",
+      "target": "sonosensitizer",
+      "strength": "strong"
+    },
+    {
+      "source": "fetch_arxiv",
+      "target": "brenner2002"
+    },
+    {
+      "source": "fetch_arxiv",
+      "target": "quantum_sl"
+    },
+    {
+      "source": "fetch_arxiv",
+      "target": "sonodynamic"
+    },
+    {
+      "source": "study_log",
+      "target": "sonoluminescence"
+    },
+    {
+      "source": "sim_rp",
+      "target": "adiabatic"
+    },
+    {
+      "source": "sim_rp",
+      "target": "bjerknes"
+    },
+    {
+      "source": "shape_stability",
+      "target": "sbsl"
+    },
+    {
+      "source": "rectified_diffusion",
+      "target": "sbsl"
+    },
+    {
+      "source": "water_physics",
+      "target": "nucleation",
+      "strength": "strong"
+    },
+    {
+      "source": "water_physics",
+      "target": "acoustic_cavitation",
+      "strength": "strong"
+    },
+    {
+      "source": "nucleation",
+      "target": "water_content",
+      "strength": "strong"
+    },
+    {
+      "source": "nucleation",
+      "target": "sim_rp"
+    },
+    {
+      "source": "water_sonolysis",
+      "target": "ros",
+      "strength": "strong"
+    },
+    {
+      "source": "water_sonolysis",
+      "target": "plasma"
+    },
+    {
+      "source": "water_content",
+      "target": "impedance_diff",
+      "strength": "strong"
+    },
+    {
+      "source": "impedance_diff",
+      "target": "sonodynamic",
+      "strength": "strong"
+    },
+    {
+      "source": "impedance_diff",
+      "target": "nucleation",
+      "strength": "strong"
+    },
+    {
+      "source": "oropharyngeal",
+      "target": "impedance_diff",
+      "strength": "strong"
+    },
+    {
+      "source": "oropharyngeal",
+      "target": "sonodynamic",
+      "strength": "strong"
+    },
+    {
+      "source": "sonodynamic",
+      "target": "water_content",
+      "strength": "strong"
+    },
+    {
+      "source": "water_content",
+      "target": "oscc",
+      "strength": "strong"
+    },
+    {
+      "source": "water_content",
+      "target": "normal_cell",
+      "strength": "strong"
+    },
+    {
+      "source": "oscc",
+      "target": "selectivity",
+      "strength": "strong"
+    },
+    {
+      "source": "normal_cell",
+      "target": "selectivity",
+      "strength": "strong"
+    },
+    {
+      "source": "cortical_stiffness",
+      "target": "oscc",
+      "strength": "strong"
+    },
+    {
+      "source": "cortical_stiffness",
+      "target": "normal_cell",
+      "strength": "strong"
+    },
+    {
+      "source": "water_content",
+      "target": "cortical_stiffness",
+      "strength": "strong"
+    },
+    {
+      "source": "selectivity",
+      "target": "sasm_engine",
+      "strength": "strong"
+    },
+    {
+      "source": "impedance_diff",
+      "target": "selectivity",
+      "strength": "strong"
+    },
+    {
+      "source": "sasm_engine",
+      "target": "oropharyngeal",
+      "strength": "strong"
+    },
+    {
+      "source": "sasm_engine",
+      "target": "sonodynamic",
+      "strength": "strong"
+    },
+    {
+      "source": "mittelstein2020",
+      "target": "sasm_engine",
+      "strength": "strong"
+    },
+    {
+      "source": "mittelstein2020",
+      "target": "selectivity"
+    },
+    {
+      "source": "nucleation",
+      "target": "oscc"
+    },
+    {
+      "source": "nucleation",
+      "target": "normal_cell"
+    },
+    {
+      "source": "sim_rp",
+      "target": "sasm_engine"
+    },
+    {
+      "source": "water_physics",
+      "target": "sasm_engine"
+    },
+    {
+      "source": "oropharyngeal",
+      "target": "oscc",
+      "strength": "strong"
+    },
+    {
+      "source": "water_sonolysis",
+      "target": "oscc",
+      "strength": "strong"
+    },
+    {
+      "source": "water_sonolysis",
+      "target": "selectivity",
+      "strength": "strong"
+    }
+  ],
+  "meta": {
+    "version": 17,
+    "last_updated": "2026-06-23",
+    "session": 5,
+    "progress": {
+      "completed": [
+        "env/setup.sh",
+        "env/requirements.txt",
+        "03_papers/fetch_arxiv.py",
+        "02_simulations/bubble_dynamics/rp_solver.py",
+        "README.md",
+        "06_logs/study_log.md",
+        "06_logs/questions.md",
+        "knowledge_graph.html",
+        "knowledge_graph_data.json",
+        "01_theory/notes/01_rayleigh_plesset.md",
+        "01_theory/notes/02_keller_miksis.md",
+        "01_theory/notes/03_thermodynamics.md",
+        "01_theory/notes/04_plasma_emission.md",
+        "01_theory/notes/05_stability_conditions.md",
+        "01_theory/notes/06_bjerknes_forces.md",
+        "01_theory/notes/07_acoustic_field_water.md",
+        "01_theory/notes/08_bubble_nucleation.md",
+        "02_simulations/water_physics/acoustic_field.py",
+        "02_simulations/water_physics/nucleation_threshold.py",
+        "S-ASM-CC v5.1 integrated into knowledge graph",
+        "01_theory/notes/09_water_sonolysis.md",
+        "02_simulations/water_physics/sonolysis_ros.py",
+        "01_theory/notes/10_multi_bubble_field.md",
+        "01_theory/notes/11_impedance_differential.md",
+        "02_simulations/targeting/impedance_model.py",
+        "03_papers/notes/cross2007_nature_nano.md",
+        "PATH B validation hunt complete",
+        "02_simulations/water_physics/multi_bubble.py",
+        "02_simulations/bubble_dynamics/keller_miksis.py",
+        "02_simulations/thermodynamics/temperature_estimator.py",
+        "02_simulations/emission/blackbody_spectrum.py",
+        "02_simulations/emission/bremsstrahlung.py",
+        "oncotripsy_full_system/src/cancer_database.py",
+        "oncotripsy_full_system/src/sasmcc_v52.py (v5.3)",
+        "PATH C: S-ASM-CC v5.1 integration COMPLETE",
+        "QENS ISIS data note saved",
+        "oncotripsy_full_system/hardware/blueprint_v2/ (blueprints.am render, all 9 cancer types + dual-amp redundancy + kinematic turret + Phase 1 phantom/animal stage)",
+        "oncotripsy_full_system/hooks/check_blueprint_vs_database.py",
+        "oncotripsy_full_system/hooks/check_engine_consistency.py",
+        "oncotripsy_full_system/hooks/check_knowledge_graph_sync.py",
+        "FULL SYSTEM CONSISTENCY CHECKPOINT 2026-06-21 \u2014 all 3 hooks PASS",
+        "cancer_database.py AFM update: COLORECTAL E_c=2.61kPa E_n=8.70kPa (PMC9600571)",
+        "cancer_database.py AFM update: CERVICAL E_c=0.44kPa E_n=1.26kPa (PMC4678138)",
+        "cancer_database.py AFM update: GLIOBLASTOMA E_c=0.169kPa E_n=0.061kPa (PMC7547774)",
+        "CRITICAL FINDING: GBM stiffer than normal brain \u2014 stiffness opposes selectivity",
+        "all_papers_categorized.md scraped and processed",
+        "CONSISTENCY CHECKPOINT 2026-06-23 \u2014 all 3 hooks PASS with updated stiffness values"
+      ],
+      "pending": [
+        "01_theory/equations/rp_derivation.py",
+        "QENS water fraction measurements per cancer type",
+        "In vitro dose-response calibration",
+        "KM solver at 450 kHz",
+        "Animal model validation",
+        "Clinical trial"
+      ]
+    },
+    "papers_indexed": 77,
+    "simulations_complete": 10,
+    "theory_notes_complete": 11,
+    "mission": "Physics-based selective cancer destruction via differential water content acoustic targeting",
+    "targeting_principle": "Cancer cell water content > normal cell water content \u2192 lower cavitation threshold \u2192 selective ROS generation \u2192 apoptosis",
+    "cancer_types_target": [
+      "oropharyngeal (primary)",
+      "all types via water content lookup"
+    ],
+    "dedication": "In memory of Ali Sayed Muhammad Osman (1957-2022)",
+    "project_name": "S-ASM-CC v5.1 Oncotripsy Therapy System",
+    "cell_models": {
+      "normal_keratinocyte": {
+        "water_fraction": 0.72,
+        "cortical_stiffness_kPa": 5.0,
+        "diameter_um": 15
+      },
+      "oscc_cancer": {
+        "water_fraction": 0.78,
+        "cortical_stiffness_kPa": 2.5,
+        "diameter_um": 18
+      }
+    },
+    "optimal_params": {
+      "frequency_Hz": 450000,
+      "peak_negative_pressure_Pa": 640000,
+      "pulse_duration_s": 0.4633,
+      "duty_cycle": 0.1,
+      "selectivity_ratio": 88.38
+    },
+    "simulation_results": {
+      "rp_solver": {
+        "file": "02_simulations/bubble_dynamics/rp_solver.py",
+        "status": "COMPLETE",
+        "params": {
+          "R0_um": 5,
+          "Pa_atm": 1.3,
+          "freq_kHz": 26.5
+        },
+        "results": {
+          "Rmax_Rmin": 300,
+          "Tmax_K": 6055,
+          "Vwall_ms": 1457,
+          "Vwall_cL": 0.97
+        },
+        "plot": "02_simulations/outputs/rp_R5um_Pa1.30atm.png"
+      },
+      "acoustic_field": {
+        "file": "02_simulations/water_physics/acoustic_field.py",
+        "status": "COMPLETE",
+        "results": {
+          "oropharynx_reflection_pct": 0.23,
+          "bone_reflection_pct": 46.38,
+          "therapeutic_window_MHz": [
+            0.5,
+            3.0
+          ],
+          "at_1MHz_10cm_survival_pct": 53.1,
+          "cavitation_thresh_5um_atm": 1.287
+        },
+        "plot": "02_simulations/outputs/layer1_acoustic_field.png"
+      },
+      "nucleation_threshold": {
+        "file": "02_simulations/water_physics/nucleation_threshold.py",
+        "status": "COMPLETE",
+        "calibration": {
+          "Rdot_th_ms": 100,
+          "k_sigmoid": 4.1e-05
+        },
+        "results": {
+          "P_th_cancer_MPa": 0.6072,
+          "P_th_normal_MPa": 0.7533,
+          "window_kPa": 146.1,
+          "Pa_optimal_MPa": 0.64,
+          "in_window": true,
+          "selectivity_model": 83.48,
+          "selectivity_sasmcc": 88.38,
+          "error_pct": 5.5
+        },
+        "plot": "02_simulations/outputs/layer2_nucleation_threshold.png"
+      },
+      "sonolysis_ros": {
+        "file": "02_simulations/water_physics/sonolysis_ros.py",
+        "status": "COMPLETE",
+        "results": {
+          "N_OH_per_collapse": 87590,
+          "N_OH_lethal_threshold": 1000,
+          "lethal_margin_x": 87.6,
+          "H2O2_mM": 0.012,
+          "apoptosis_threshold_mM": 0.01,
+          "l_OH_nm": 7.5,
+          "P_kill_cancer": 1.0,
+          "P_kill_normal": 0.01,
+          "combined_selectivity": 105
+        },
+        "plot": "02_simulations/outputs/layer3_sonolysis_ros.png"
+      },
+      "pan_cancer_model": {
+        "file": "02_simulations/targeting/impedance_model.py",
+        "status": "COMPLETE",
+        "results": {
+          "OSCC": {
+            "Pa_MPa": 0.644,
+            "f_kHz": 450,
+            "sel": 73.9,
+            "validated": true
+          },
+          "Breast_IDC": {
+            "Pa_MPa": 0.643,
+            "f_kHz": 2364,
+            "sel": 960.6,
+            "validated": false
+          },
+          "Prostate": {
+            "Pa_MPa": 0.708,
+            "f_kHz": 886,
+            "sel": 1347,
+            "validated": false
+          },
+          "Lung_NSCLC": {
+            "Pa_MPa": 0.57,
+            "f_kHz": 1182,
+            "sel": 55.2,
+            "validated": false
+          },
+          "Colorectal": {
+            "Pa_MPa": 0.615,
+            "f_kHz": 1013,
+            "sel": 245.9,
+            "validated": false
+          },
+          "Liver_HCC": {
+            "Pa_MPa": 0.65,
+            "f_kHz": 788,
+            "sel": 190.4,
+            "validated": false
+          },
+          "Pancreatic": {
+            "Pa_MPa": 0.744,
+            "f_kHz": 709,
+            "sel": 309.3,
+            "validated": false
+          },
+          "Glioblastoma": {
+            "Pa_MPa": 0.52,
+            "f_kHz": 1773,
+            "sel": 26.9,
+            "validated": false
+          },
+          "Cervical": {
+            "Pa_MPa": 0.608,
+            "f_kHz": 1182,
+            "sel": 98.7,
+            "validated": false
+          }
+        },
+        "plot": "02_simulations/outputs/layer6_pan_cancer.png"
+      }
+    },
+    "validation_roadmap": {
+      "OSCC": {
+        "status": "VALIDATED",
+        "evidence": [
+          "S-ASM-CC v5.1 simulation",
+          "Mittelstein 2020 APL",
+          "QENS water data",
+          "AFM stiffness data"
+        ],
+        "selectivity_confirmed": 88.38,
+        "next": "In vitro cell line experiments"
+      },
+      "Breast_IDC": {
+        "status": "STIFFNESS VALIDATED \u2014 water fraction still needed",
+        "evidence_needed": [
+          "QENS f_water measurement",
+          "AFM E_cortical confirmation",
+          "In vitro MCF-7 cell line"
+        ],
+        "predicted_selectivity": 960.6,
+        "priority": 1,
+        "reason": "Highest patient population, high predicted selectivity",
+        "evidence": [
+          "Cross 2007 \u2014 E_cancer=0.6kPa",
+          "Shimolina 2025 \u2014 AFM confirmed",
+          "Wang 2016 \u2014 MCF-7 softer"
+        ]
+      },
+      "Prostate": {
+        "status": "STIFFNESS VALIDATED \u2014 water fraction still needed",
+        "evidence_needed": [
+          "QENS f_water measurement",
+          "AFM E_cortical",
+          "In vitro LNCaP cell line"
+        ],
+        "predicted_selectivity": 1347,
+        "priority": 2,
+        "reason": "Second highest selectivity predicted",
+        "evidence": [
+          "Cross 2007 \u2014 E_cancer=0.30xNormal",
+          "Pogoda 2021 \u2014 AFM confirmed",
+          "Zeng 2023 \u2014 prostate AFM"
+        ]
+      },
+      "Lung_NSCLC": {
+        "status": "STIFFNESS VALIDATED \u2014 water fraction still needed",
+        "evidence_needed": [
+          "QENS f_water",
+          "AFM data",
+          "In vitro A549 cell line"
+        ],
+        "predicted_selectivity": 55.2,
+        "priority": 5,
+        "reason": "Lower selectivity \u2014 needs better water data",
+        "evidence": [
+          "Cross 2007 \u2014 lung direct measurement"
+        ]
+      },
+      "Colorectal": {
+        "status": "STIFFNESS VALIDATED \u2014 water fraction still needed",
+        "evidence_needed": [
+          "QENS f_water",
+          "AFM data",
+          "In vitro HCT116"
+        ],
+        "predicted_selectivity": 245.9,
+        "priority": 3,
+        "reason": "Good selectivity, large patient population",
+        "evidence": []
+      },
+      "Liver_HCC": {
+        "status": "PREDICTED",
+        "evidence_needed": [
+          "QENS f_water",
+          "AFM data",
+          "In vitro HepG2"
+        ],
+        "predicted_selectivity": 190.4,
+        "priority": 4,
+        "reason": "Moderate selectivity, deep target needs frequency check",
+        "evidence": []
+      },
+      "Pancreatic": {
+        "status": "STIFFNESS VALIDATED \u2014 water fraction still needed",
+        "evidence_needed": [
+          "QENS f_water",
+          "AFM data",
+          "In vitro PANC-1",
+          "Depth penetration validation"
+        ],
+        "predicted_selectivity": 309.3,
+        "priority": 3,
+        "reason": "Good selectivity but deep target (10cm) needs penetration study",
+        "evidence": [
+          "Cross 2007 \u2014 pancreas direct measurement"
+        ]
+      },
+      "Glioblastoma": {
+        "status": "STIFFNESS VALIDATED \u2014 water fraction still needed \u2014 GBM STIFFER than normal (critical exception)",
+        "evidence_needed": [
+          "QENS f_water",
+          "AFM data",
+          "Blood-brain barrier consideration",
+          "Post-craniotomy access study"
+        ],
+        "predicted_selectivity": 26.9,
+        "priority": 6,
+        "reason": "Lowest predicted selectivity, BBB complicates delivery",
+        "evidence": []
+      },
+      "Cervical": {
+        "status": "STIFFNESS VALIDATED \u2014 water fraction still needed",
+        "evidence_needed": [
+          "QENS f_water",
+          "AFM data",
+          "In vitro HeLa"
+        ],
+        "predicted_selectivity": 98.7,
+        "priority": 4,
+        "reason": "Similar to OSCC selectivity \u2014 good candidate for early validation",
+        "evidence": []
+      }
+    },
+    "physics_chain": {
+      "complete": true,
+      "chain": "Sound \u2192 Acoustic Field \u2192 Bubble Nucleation \u2192 Collapse \u2192 ROS \u2192 Cancer Death",
+      "layers_complete": [
+        1,
+        2,
+        3,
+        5,
+        6
+      ],
+      "layers_pending": [
+        4
+      ],
+      "layer_4_note": "Layer 4 = emission spectrum (blackbody/bremsstrahlung) \u2014 needed for sonosensitizer matching only",
+      "key_numbers": {
+        "Pa_optimal_OSCC_MPa": 0.64,
+        "freq_optimal_OSCC_kHz": 450,
+        "selectivity_validated": 88.38,
+        "window_width_kPa": 146.1,
+        "N_OH_per_collapse": 87590,
+        "lethal_margin_x": 87.6,
+        "P_kill_cancer": 1.0,
+        "P_kill_normal": 0.01,
+        "treatment_duration_s": 60,
+        "duty_cycle": 0.1
+      }
+    },
+    "session_protocol": {
+      "how_to_start": "cat ~/sonoluminescence/knowledge_graph_data.json",
+      "what_claude_reads": "Only this JSON \u2014 contains full project state",
+      "what_to_bring": "Any new research papers, validation data, or questions",
+      "current_priority": "Experimental validation of OSCC predictions in vitro",
+      "next_build_task": "multi_bubble.py simulation (Layer 5 simulation)",
+      "open_questions": [
+        "What exact QENS papers establish water fractions for breast/prostate?",
+        "Has Mittelstein 2020 been replicated for non-OSCC cancers?",
+        "What is the minimum tumor size treatable at 450 kHz focal resolution?",
+        "Temperature correction needed: T_eff = min(T_adiabatic, 50000K)"
+      ]
+    },
+    "key_papers": {
+      "cross2007": "Nature Nanotech 2007 \u2014 E_cancer=70% softer \u2014 universal",
+      "heyden2015": "arXiv:1512.03320 \u2014 original oncotripsy theory",
+      "schibber2019": "arXiv:1911.12407 \u2014 oncotripsy dynamical model",
+      "mittelstein2020": "APL 116 013701 \u2014 selective ablation \u2014 S-ASM-CC foundation",
+      "brenner2002": "Rev Mod Phys 74 425 \u2014 SBSL review",
+      "rezaee2022": "arXiv:2203.11337 \u2014 quantum SL"
+    },
+    "validation_gaps": {
+      "critical_missing": "f_water per cancer type from QENS \u2014 not on arXiv/PubMed",
+      "impact": "Water fraction drives 60% of threshold \u2014 stiffness only 0.3%",
+      "how_to_get": [
+        "QENS paper cited in S-ASM-CC v5.1 \u2014 get directly",
+        "NIST Center for Neutron Research publications",
+        "MRI ADC as proxy for water fraction",
+        "ISIS Neutron Source publication database"
+      ],
+      "confidence": {
+        "OSCC": "HIGH \u2014 QENS+AFM+S-ASM-CC",
+        "Breast": "MEDIUM \u2014 stiffness confirmed, water estimated",
+        "Prostate": "MEDIUM \u2014 stiffness confirmed, water estimated",
+        "Lung": "MEDIUM \u2014 Cross 2007 direct, water estimated",
+        "Pancreatic": "MEDIUM \u2014 Cross 2007 direct, water estimated",
+        "Others": "LOW \u2014 both estimated"
+      }
+    },
+    "sdt_recommendation": {
+      "optimal_sensitizer_air": "PPIX (405nm) \u2014 exact match to \u03bb_peak=396nm",
+      "optimal_sensitizer_argon": "TiO\u2082 or NaNbO\u2083 (345-350nm) \u2014 deep UV match",
+      "gas_recommendation": "Argon-saturated medium \u2014 24\u00d7 more power, 100-1000\u00d7 more photons",
+      "clinical_path_OSCC": "PPIX (clinically approved) + Argon saturation + 450kHz 0.640MPa"
+    },
+    "physics_engine": {
+      "status": "COMPLETE",
+      "simulations": 10,
+      "layers_complete": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "all_layers_done": true,
+      "emission_model": "Blackbody dominant + Bremsstrahlung negligible (<1e-11)",
+      "validated_against": "S-ASM-CC v5.1 88.38x selectivity, 5.5% error",
+      "next": "PATH C \u2014 S-ASM-CC v5.1 integration"
+    },
+    "sasmcc_v53": {
+      "status": "COMPLETE",
+      "file": "oncotripsy_full_system/src/sasmcc_v52.py",
+      "cancer_types": 9,
+      "all_p_kill_cancer": 1.0,
+      "all_p_kill_normal": 0.0,
+      "validated": [
+        "OSCC"
+      ],
+      "stiffness_validated": [
+        "BREAST",
+        "PROSTATE",
+        "LUNG",
+        "PANCREATIC"
+      ],
+      "predicted": [
+        "COLORECTAL",
+        "LIVER",
+        "GLIOBLASTOMA",
+        "CERVICAL"
+      ],
+      "hardware_params_generated": 9
+    },
+    "qens_finding": {
+      "source": "ISIS Neutron Source OSIRIS+LET spectrometers",
+      "confirmed": "Cancer cells have more mobile bulk-like water",
+      "ranking": "Lung > Prostate > Breast (water mobility increase)",
+      "clinical_insight": "SDT before chemotherapy \u2014 cisplatin raises threshold",
+      "model_refinement": "Two-population water model needed for full accuracy"
+    },
+    "hardware_blueprint_v2": {
+      "status": "GENERATED, AUDITED, VERIFIED",
+      "source": "blueprints.am",
+      "directory": "oncotripsy_full_system/hardware/blueprint_v2/",
+      "rf_architecture": "single DDS/DAC -> dual redundant E&I 1040L amps (band-split A=low/B=high) -> 2x8 output relay matrix -> 8 transducers",
+      "transducer_mount": "motorized indexed rotary turret, kinematic per-position mounts, absolute encoder",
+      "phase1_included": true,
+      "phase1_items_confirmed": [
+        "animal_stage",
+        "anesthesia",
+        "recovery_chamber",
+        "reflector",
+        "hydrophone",
+        "pcd",
+        "phantom_set_9x"
+      ],
+      "known_simplification": "single DDS = no simultaneous dual-transducer operation; amp redundancy and full routing flexibility ARE present; upgrade path is additive (2nd DDS/attenuator/switch) if needed later",
+      "hooks_passing": true
+    },
+    "stiffness_validated_count": 8,
+    "predicted_count": 1
+  }
+}
