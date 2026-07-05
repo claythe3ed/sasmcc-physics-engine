@@ -38,20 +38,75 @@ F_REF   = 0.60        # reference free water fraction
 CELLS = {
     'Normal\nKeratinocyte': {
         'water':     0.72,
-        'stiffness': 5.0,    # kPa
-        'diameter':  15.0,   # µm
+        'stiffness': 5.0,
+        'diameter':  15.0,
         'color':     '#00e5ff',
         'ls':        '--',
     },
     'OSCC\nCancer': {
         'water':     0.78,
-        'stiffness': 2.5,    # kPa
-        'diameter':  18.0,   # µm
+        'stiffness': 2.5,
+        'diameter':  18.0,
         'color':     '#ff4081',
         'ls':        '-',
     },
+    'Breast\n(IDC)': {
+        'water':     0.732,
+        'stiffness': 2.0,   # من قاعدة البيانات
+        'diameter':  14.0,
+        'color':     '#ff6f00',
+        'ls':        '-',
+    },
+    'Prostate': {
+        'water':     0.742,
+        'stiffness': 3.5,
+        'diameter':  13.0,
+        'color':     '#d500f9',
+        'ls':        '-',
+    },
+    'Lung\n(NSCLC)': {
+        'water':     0.812,
+        'stiffness': 2.5,
+        'diameter':  13.0,
+        'color':     '#00bcd4',
+        'ls':        '-',
+    },
+    'Pancreatic\n(PDAC)': {
+        'water':     0.728,
+        'stiffness': 6.0,
+        'diameter':  12.0,
+        'color':     '#ff5722',
+        'ls':        '-',
+    },
+    'Glioblastoma\n(GBM)': {
+        'water':     0.752,
+        'stiffness': 0.169,
+        'diameter':  12.0,
+        'color':     '#9c27b0',
+        'ls':        '-',
+    },
+    'Hepatocellular\n(HCC)': {
+        'water':     0.787,
+        'stiffness': 2.0,
+        'diameter':  20.0,
+        'color':     '#4caf50',
+        'ls':        '-',
+    },
+    'Cervical': {
+        'water':     0.729,
+        'stiffness': 0.44,
+        'diameter':  14.0,
+        'color':     '#e91e63',
+        'ls':        '-',
+    },
+    'Colorectal': {
+        'water':     0.728,
+        'stiffness': 2.61,
+        'diameter':  14.0,
+        'color':     '#3f51b5',
+        'ls':        '-',
+    },
 }
-
 # S-ASM-CC v5.1 optimal parameters
 OPT_FREQ   = 450000.0    # Hz
 OPT_PRESS  = 640000.0    # Pa (0.640 MPa)
