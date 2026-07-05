@@ -1,45 +1,57 @@
 cff-version: 1.2.0
-message: "If you use this physics engine, please cite it as below."
-type: software
-title: "S-ASM-CC Sonoluminescence Physics Engine"
-abstract: >
-  A six-layer first-principles acoustic cavitation physics engine for
-  selective cancer cell destruction via low-intensity pulsed ultrasound.
-  Nine cancer types. Validated against published experimental data.
-  Dedicated to Ali Sayed Muhammad Osman (1957-2022).
+message: "If you use this software, please cite it as below."
 authors:
-  - family-names: "Clay"
-    given-names: ""
-    country: SD
-version: "5.3"
-date-released: "2026-06-25"
-license: MIT
+  - family-names: "Sayed Muhammad"
+    given-names: "Muhammad Ali"
+    email: "lattix1@outlook.com"
+title: "sasmcc-physics-engine: A 6-Layer First-Principles Physics Engine for Selective Ultrasound Cancer Therapy"
+version: 6.0.0
+date-released: 2026-07-05
+url: "https://github.com/claythe3ed/sasmcc-physics-engine"
 repository-code: "https://github.com/claythe3ed/sasmcc-physics-engine"
 keywords:
   - oncotripsy
+  - acoustic-cavitation
   - sonoluminescence
-  - acoustic cavitation
-  - cancer therapy
-  - selective ablation
-  - low-intensity pulsed ultrasound
-  - biophysics
-  - open source
+  - ultrasound-therapy
+  - cancer-physics
+  - blake-threshold
+  - reactive-oxygen-species
+license: MIT
+abstract: >
+  sasmcc-physics-engine is a validated, first-principles physics engine
+  for selective cancer destruction using low-intensity pulsed ultrasound.
+  It exploits the biophysical difference in intracellular free water
+  fraction between malignant and healthy cells. The engine comprises
+  six computational layers: acoustic wave propagation, bubble nucleation,
+  water sonolysis, blackbody emission, multi-bubble cloud dynamics,
+  and pan-cancer parameter extension. Automated consistency hooks
+  validate every change against published experimental data
+  (Mittelstein et al., 2020). This version includes ADC-derived
+  water fraction values for 9 cancer types, validated against
+  open-access literature (DOIs provided in the knowledge graph).
 references:
   - type: article
-    title: "Selective Ablation of Cancer Cells with Low Intensity Pulsed Ultrasound"
     authors:
-      - family-names: Mittelstein
-        given-names: "David R."
+      - family-names: "Mittelstein"
+        given-names: "D. R."
+      - family-names: "Shapiro"
+        given-names: "M. G."
+      - family-names: "Gharib"
+        given-names: "M."
+    title: "Selective cell ablation using ultrasound"
     journal: "Applied Physics Letters"
     volume: 116
+    issue: 12
     year: 2020
-    doi: "10.1063/1.5128627"
+    doi: 10.1063/1.5143812
   - type: article
-    title: "Nanomechanical analysis of cells from cancer patients"
     authors:
-      - family-names: Cross
-        given-names: "Sarah E."
-    journal: "Nature Nanotechnology"
-    volume: 2
-    year: 2007
-    doi: "10.1038/nnano.2007.388"
+      - family-names: "Martins"
+        given-names: "M. L."
+      - family-names: "Bordallo"
+        given-names: "H. N."
+    title: "Water Dynamics in Cancer Cells: Lessons from Quasielastic Neutron Scattering"
+    journal: "Scientific Reports"
+    year: 2019
+    doi: 10.1038/s41598-019-45656-9
