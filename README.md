@@ -1,3 +1,10 @@
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+![Version](https://img.shields.io/badge/version-6.0.0-blue)
+![CI](https://github.com/claythe3ed/sasmcc-physics-engine/actions/workflows/ci.yml/badge.svg)
+![Python](https://img.shields.io/badge/Python-3.11-blue.svg)
+![Layers](https://img.shields.io/badge/Physics%20Layers-6-brightgreen)
+![Tests](https://img.shields.io/badge/tests-passing-brightgreen)
+![GitHub stars](https://img.shields.io/github/stars/claythe3ed/sasmcc-physics-engine?style=social)
 # S-ASM-CC Physics Engine
 ### Superconductive ASM Memorial Computational Core
 
