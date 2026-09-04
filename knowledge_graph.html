@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sonoluminescence — Knowledge Graph</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/d3/7.8.5/d3.min.js"></script>
+<style>
+:root{--bg:#04060f;--core:#00e5ff;--physics:#7c4dff;--sim:#00e676;--paper:#ff9100;--advanced:#ff4081;--eq:#ffe57f;--dim:rgba(255,255,255,0.22);--panel:rgba(6,12,30,0.92);}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--bg);font-family:'JetBrains Mono',monospace,sans-serif;color:#e0e8ff;overflow:hidden;height:100vh;width:100vw;}
+body::before{content:'';position:fixed;inset:0;background-image:linear-gradient(rgba(30,60,120,0.18) 1px,transparent 1px),linear-gradient(90deg,rgba(30,60,120,0.18) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;z-index:0;}
+#header{position:fixed;top:0;left:0;right:0;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:14px 24px;background:linear-gradient(180deg,rgba(4,6,15,0.98) 0%,transparent 100%);border-bottom:1px solid rgba(0,229,255,0.1);}
+#header h1{font-weight:800;font-size:1.1rem;letter-spacing:.12em;text-transform:uppercase;color:var(--core);text-shadow:0 0 20px rgba(0,229,255,0.5);}
+#header .sub{font-size:.6rem;color:var(--dim);letter-spacing:.2em;}
+#legend{position:fixed;bottom:20px;left:20px;z-index:20;background:var(--panel);border:1px solid rgba(0,229,255,0.12);border-radius:8px;padding:12px 16px;backdrop-filter:blur(12px);}
+#legend h3{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);margin-bottom:8px;}
+.li{display:flex;align-items:center;gap:8px;font-size:.6rem;color:#b0bcd8;margin-bottom:5px;}
+.ld{width:9px;height:9px;border-radius:50%;flex-shrink:0;}
+#panel{position:fixed;top:70px;right:20px;width:250px;z-index:20;background:var(--panel);border:1px solid rgba(0,229,255,0.15);border-radius:10px;padding:16px;backdrop-filter:blur(14px);transform:translateX(300px);transition:transform .35s cubic-bezier(.4,0,.2,1);}
+#panel.on{transform:translateX(0);}
+#panel .pt{font-size:.56rem;letter-spacing:.2em;text-transform:uppercase;margin-bottom:5px;}
+#panel .pn{font-weight:700;font-size:.95rem;margin-bottom:8px;line-height:1.3;}
+#panel .pd{font-size:.65rem;color:#8fa0c0;line-height:1.7;}
+#panel .tags{margin-top:10px;display:flex;flex-wrap:wrap;gap:5px;}
+#panel .tag{font-size:.55rem;padding:2px 7px;border-radius:4px;background:rgba(255,255,255,0.06);color:#7090b0;border:1px solid rgba(255,255,255,0.08);}
+#panel .x{position:absolute;top:10px;right:12px;background:none;border:none;color:var(--dim);cursor:pointer;font-size:.9rem;}
+#meta{position:fixed;top:70px;left:20px;z-index:20;}
+#search{background:var(--panel);border:1px solid rgba(0,229,255,0.15);border-radius:8px;padding:7px 13px;font-family:inherit;font-size:.68rem;color:#c8d8f0;width:190px;outline:none;backdrop-filter:blur(12px);}
+#search:focus{border-color:rgba(0,229,255,0.45);}
+#search::placeholder{color:rgba(100,130,180,0.5);}
+#ctrl{position:fixed;bottom:20px;right:20px;z-index:20;display:flex;flex-direction:column;gap:7px;}
+.cb{width:34px;height:34px;border-radius:8px;background:var(--panel);border:1px solid rgba(0,229,255,0.15);color:#7090b0;font-size:.95rem;cursor:pointer;display:flex;align-items:center;justify-content:center;backdrop-filter:blur(12px);}
+.cb:hover{color:var(--core);border-color:rgba(0,229,255,0.4);}
+#progress{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);z-index:20;background:var(--panel);border:1px solid rgba(0,229,255,0.12);border-radius:8px;padding:8px 16px;font-size:.6rem;color:#7090b0;backdrop-filter:blur(12px);text-align:center;}
+svg{position:relative;z-index:1;}
+.link{stroke:rgba(100,140,220,0.22);stroke-width:1.2px;fill:none;}
+.link.strong{stroke:rgba(0,229,255,0.32);stroke-width:1.8px;}
+.node circle{cursor:pointer;}
+.node text{font-size:9.5px;fill:#c8d8f0;pointer-events:none;text-anchor:middle;}
+.node-dim{opacity:.12;}
+</style>
+</head>
+<body>
+<div id="header">
+  <div><h1>Sonoluminescence</h1><div class="sub">Knowledge Graph — Live Study Map</div></div>
+  <div style="font-size:.58rem;color:var(--dim);text-align:right;">Tap node · Drag · Search</div>
+</div>
+<div id="meta"><input id="search" type="text" placeholder="Search nodes..."></div>
+<div id="panel">
+  <button class="x" onclick="closeP()">✕</button>
+  <div class="pt" id="pt"></div>
+  <div class="pn" id="pn"></div>
+  <div class="pd" id="pd"></div>
+  <div class="tags" id="ptags"></div>
+</div>
+<div id="legend">
+  <h3>Node Types</h3>
+  <div class="li"><div class="ld" style="background:#00e5ff"></div>Core</div>
+  <div class="li"><div class="ld" style="background:#7c4dff"></div>Physics</div>
+  <div class="li"><div class="ld" style="background:#ffe57f"></div>Equation</div>
+  <div class="li"><div class="ld" style="background:#00e676"></div>Simulation</div>
+  <div class="li"><div class="ld" style="background:#ff9100"></div>Literature</div>
+  <div class="li"><div class="ld" style="background:#ff4081"></div>Frontier/SDT</div>
+</div>
+<div id="progress">Loading...</div>
+<div id="ctrl">
+  <button class="cb" onclick="zI()">+</button>
+  <button class="cb" onclick="zO()">−</button>
+  <button class="cb" onclick="zR()">⌖</button>
+</div>
+<svg id="graph"></svg>
+<script>
+const GC={core:"#00e5ff",physics:"#7c4dff",eq:"#ffe57f",sim:"#00e676",paper:"#ff9100",advanced:"#ff4081"};
+const GL={core:"CORE",physics:"PHYSICS",eq:"EQUATION",sim:"SIMULATION",paper:"LITERATURE",advanced:"FRONTIER"};
+
+const svg=d3.select("#graph").attr("width",window.innerWidth).attr("height",window.innerHeight);
+const g=svg.append("g");
+const zoom=d3.zoom().scaleExtent([0.15,4]).on("zoom",e=>g.attr("transform",e.transform));
+svg.call(zoom);
+
+const defs=svg.append("defs");
+
+fetch("knowledge_graph_data.json")
+  .then(r=>r.json())
+  .then(data=>{
+    const {nodes,links,meta}=data;
+
+    // update progress bar
+    const done=meta.progress.completed.length;
+    const total=done+meta.progress.pending.length;
+    document.getElementById("progress").innerHTML=
+      `v${meta.version} · ${meta.last_updated} · Papers: ${meta.papers_indexed} · Sims: ${meta.simulations_complete}/${total} files · Mission: ${meta.mission.slice(0,40)}...`;
+
+    // glow filters
+    Object.entries(GC).forEach(([k,c])=>{
+      const f=defs.append("filter").attr("id",`g-${k}`).attr("x","-50%").attr("y","-50%").attr("width","200%").attr("height","200%");
+      f.append("feGaussianBlur").attr("stdDeviation","3.5").attr("result","blur");
+      const m=f.append("feMerge");
+      m.append("feMergeNode").attr("in","blur");
+      m.append("feMergeNode").attr("in","SourceGraphic");
+    });
+
+    const sim=d3.forceSimulation(nodes)
+      .force("link",d3.forceLink(links).id(d=>d.id).distance(d=>d.strength==="strong"?105:155).strength(d=>d.strength==="strong"?0.7:0.3))
+      .force("charge",d3.forceManyBody().strength(d=>-d.r*26))
+      .force("center",d3.forceCenter(window.innerWidth/2,window.innerHeight/2))
+      .force("collision",d3.forceCollide(d=>d.r+16));
+
+    const link=g.append("g").selectAll("line").data(links).enter().append("line")
+      .attr("class",d=>d.strength==="strong"?"link strong":"link");
+
+    const node=g.append("g").selectAll(".node").data(nodes).enter().append("g")
+      .attr("class","node")
+      .call(d3.drag()
+        .on("start",(e,d)=>{if(!e.active)sim.alphaTarget(0.3).restart();d.fx=d.x;d.fy=d.y;})
+        .on("drag",(e,d)=>{d.fx=e.x;d.fy=e.y;})
+        .on("end",(e,d)=>{if(!e.active)sim.alphaTarget(0);d.fx=null;d.fy=null;}))
+      .on("click",(e,d)=>{e.stopPropagation();openP(d);hilite(d);});
+
+    node.append("circle").attr("r",d=>d.r+7).attr("fill",d=>GC[d.group]).attr("opacity",0.07).attr("filter",d=>`url(#g-${d.group})`);
+    node.append("circle").attr("r",d=>d.r)
+      .attr("fill",d=>d.group==="core"?GC[d.group]:"transparent")
+      .attr("stroke",d=>GC[d.group]).attr("stroke-width",d=>d.group==="core"?0:1.8)
+      .attr("filter",d=>`url(#g-${d.group})`);
+    node.filter(d=>d.group!=="core").append("circle").attr("r",d=>d.r*0.32).attr("fill",d=>GC[d.group]).attr("opacity",0.55);
+
+    node.each(function(d){
+      const lines=d.label.split("\n");
+      const el=d3.select(this);
+      const y=d.r+13;
+      lines.forEach((ln,i)=>{
+        el.append("text").attr("y",y+i*12).attr("fill","#04060f").attr("stroke","#04060f").attr("stroke-width","3px").attr("paint-order","stroke").text(ln);
+        el.append("text").attr("y",y+i*12).attr("fill",GC[d.group]).attr("opacity",0.9).text(ln);
+      });
+    });
+
+    sim.on("tick",()=>{
+      link.attr("x1",d=>d.source.x).attr("y1",d=>d.source.y).attr("x2",d=>d.target.x).attr("y2",d=>d.target.y);
+      node.attr("transform",d=>`translate(${d.x},${d.y})`);
+    });
+
+    svg.on("click",()=>{closeP();clearH();});
+
+    document.getElementById("search").addEventListener("input",function(){
+      const q=this.value.toLowerCase().trim();
+      if(!q){clearH();return;}
+      const ids=new Set(nodes.filter(n=>n.label.toLowerCase().includes(q)||(n.desc&&n.desc.toLowerCase().includes(q))||(n.tags&&n.tags.some(t=>t.toLowerCase().includes(q)))).map(n=>n.id));
+      node.classed("node-dim",n=>!ids.has(n.id));
+      link.attr("opacity",0.05);
+    });
+
+    function openP(d){
+      document.getElementById("pt").textContent=GL[d.group]||d.group.toUpperCase();
+      document.getElementById("pt").style.color=GC[d.group];
+      document.getElementById("pn").textContent=d.label.replace("\n"," ");
+      document.getElementById("pn").style.color=GC[d.group];
+      document.getElementById("pd").textContent=d.desc;
+      const tg=document.getElementById("ptags");
+      tg.innerHTML="";
+      (d.tags||[]).forEach(t=>{const s=document.createElement("span");s.className="tag";s.textContent=t;tg.appendChild(s);});
+      document.getElementById("panel").classList.add("on");
+    }
+    window.closeP=()=>document.getElementById("panel").classList.remove("on");
+
+    function hilite(d){
+      const conn=new Set([d.id]);
+      links.forEach(l=>{if(l.source.id===d.id)conn.add(l.target.id);if(l.target.id===d.id)conn.add(l.source.id);});
+      node.classed("node-dim",n=>!conn.has(n.id));
+      link.attr("opacity",l=>l.source.id===d.id||l.target.id===d.id?1:0.04);
+    }
+    function clearH(){node.classed("node-dim",false);link.attr("opacity",1);}
+
+    window.zI=()=>svg.transition().call(zoom.scaleBy,1.4);
+    window.zO=()=>svg.transition().call(zoom.scaleBy,0.7);
+    window.zR=()=>svg.transition().call(zoom.transform,d3.zoomIdentity.translate(window.innerWidth/2,window.innerHeight/2).scale(0.85).translate(-window.innerWidth/2,-window.innerHeight/2));
+    window.addEventListener("resize",()=>{svg.attr("width",window.innerWidth).attr("height",window.innerHeight);sim.force("center",d3.forceCenter(window.innerWidth/2,window.innerHeight/2)).restart();});
+  })
+  .catch(e=>{
+    document.getElementById("progress").textContent="Error loading data: "+e.message;
+    console.error(e);
+  });
+</script>
+</body>
+</html>
