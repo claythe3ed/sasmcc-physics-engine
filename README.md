@@ -5,7 +5,11 @@
 ![Layers](https://img.shields.io/badge/Physics%20Layers-6-brightgreen)
 ![Tests](https://img.shields.io/badge/tests-passing-brightgreen)
 ![GitHub stars](https://img.shields.io/github/stars/claythe3ed/sasmcc-physics-engine?style=social)
+
 # S-ASM-CC Physics Engine
+
+![S-ASM-CC Logo](logo.jpeg)
+
 ### Superconductive ASM Memorial Computational Core
 
 *Dedicated to Ali Sayed Muhammad Osman (1957-2022). Every equation. Every simulation. Every result.*
