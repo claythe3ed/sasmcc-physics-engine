@@ -620,6 +620,40 @@
         "dataset",
         "VALIDATED"
       ]
+    },
+    {
+      "id": "milestone_2608_files_accepted",
+      "label": "Manuscript 2608 \u2013 Files Accepted",
+      "status": "VALIDATED",
+      "type": "milestone",
+      "timestamp": "2026-09-11T18:29:06",
+      "date": "2026-09-11",
+      "description": "Managing Editor Dr. Abnet Woldesenbet Milki confirmed receipt of editable Word files (full + blind versions) for Manuscript ID 2608. Manuscript is now ready to proceed to peer review at the East African Journal of Biophysical and Computational Sciences.",
+      "details": {
+        "journal": "East African Journal of Biophysical and Computational Sciences",
+        "publisher": "Hawassa University, Ethiopia",
+        "manuscript_id": "2608",
+        "manuscript_title": "S-ASM-CC: A Six-Layer First-Principles Physics Engine for Selective Ultrasound-Induced Cavitation in Cancer Cells",
+        "files_sent": [
+          "manuscript_full-9.docx",
+          "manuscript_blind.docx"
+        ],
+        "sent_to": "abnetm@hu.edu.et",
+        "cc": [
+          "abnetyer2012@gmail.com",
+          "zerie96@gmail.com"
+        ],
+        "editor_confirmation": "Dear Author, Thank you for your response.",
+        "next_step": "Peer review assignment",
+        "expected_timeline": "4\u20138 weeks (by November 2026)"
+      },
+      "tags": [
+        "Milestone",
+        "Submission",
+        "PeerReview",
+        "EAJBCS",
+        "VALIDATED"
+      ]
     }
   ],
   "links": [
