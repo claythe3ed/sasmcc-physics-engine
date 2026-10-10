@@ -27,3 +27,10 @@ Thumbs.db
 *.log
 06_logs/
 correspondence/
+
+# Personal and administrative files
+editorial_contacts.txt
+papers/author_guidelines_2026.pdf
+papers/copyright_form*.pdf
+papers/*.txt
+papers/*.bak*
