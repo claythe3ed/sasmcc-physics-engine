@@ -20,7 +20,7 @@
 
 A complete six-layer first-principles physics engine for selective cancer cell destruction via low-intensity pulsed ultrasound. Cancer cells contain a higher fraction of free intracellular water, which lowers their acoustic cavitation threshold and makes them selectively vulnerable to a precisely tuned ultrasound pulse that leaves surrounding healthy tissue unharmed.
 
-Built entirely on a mobile Android device (Termux) in a conflict-affected environment. Not a clinical device. A validated computational physics engine ready for wet-lab validation.
+Built entirely on a mobile Android device (Termux) in a conflict-affected environment. Not a clinical device. A computational physics engine (not experimentally validated) ready for wet-lab validation.
 
 ---
 
@@ -35,7 +35,7 @@ The cavitation threshold depends primarily on intracellular cytoplasmic viscosit
 | Layer | Physics | Status | Key Result |
 |-------|---------|--------|------------|
 | 1 | Acoustic field | Complete | c=1529 m/s, window 0.5-3 MHz |
-| 2 | Bubble nucleation | Validated | Window=146 kPa, selectivity 88x vs 88.38x literature |
+| 2 | Bubble nucleation | Cross-checked | Window=146 kPa, selectivity 83.5x vs 88.38x (earlier S-ASM-CC v5.1 model; internal, not experimental) |
 | 3 | Water sonolysis ROS | Complete | 87590 OH per collapse, 87.6x lethal threshold |
 | 4 | Blackbody emission | Complete | peak=396 nm at 7321 K, matches PPIX 405 nm |
 | 5 | Multi-bubble cloud | Complete | dT=0.106 K non-thermal, 2 cm tumor in 1.4 s |
@@ -47,19 +47,19 @@ The cavitation threshold depends primarily on intracellular cytoplasmic viscosit
 
 | Type | E_cancer | E_normal | f_water | Selectivity | Status |
 |------|----------|----------|---------|-------------|--------|
-| OSCC | 2.50 kPa | 5.00 kPa | 0.780 | 73.9x | VALIDATED |
-| Breast IDC | 0.60 kPa | 2.00 kPa | 0.732 | 965.5x | STIFFNESS_VALIDATED |
-| Prostate | 1.05 kPa | 3.50 kPa | 0.742 | 1352.3x | STIFFNESS_VALIDATED |
-| Lung NSCLC | 0.75 kPa | 2.50 kPa | 0.812 | 55.5x | STIFFNESS_VALIDATED |
-| Colorectal | 2.61 kPa | 8.70 kPa | 0.728 | 269.5x | STIFFNESS_VALIDATED |
-| Pancreatic | 1.80 kPa | 6.00 kPa | 0.728 | 310.8x | STIFFNESS_VALIDATED |
-| Glioblastoma | 0.169 kPa | 0.061 kPa | 0.752 | 26.1x | STIFFNESS_VALIDATED* |
-| Cervical | 0.44 kPa | 1.26 kPa | 0.729 | 95.7x | STIFFNESS_VALIDATED |
-| Liver HCC | 1.20 kPa | 3.00 kPa | 0.787 | 190.4x | STIFFNESS_VALIDATED |
+| OSCC | 2.50 kPa | 5.00 kPa | 0.780 | 73.9x | REFERENCE |
+| Breast IDC | 0.60 kPa | 2.00 kPa | 0.790 | 965.5x | STIFFNESS_SUPPORTED |
+| Prostate | 1.05 kPa | 3.50 kPa | 0.760 | 1352.3x | STIFFNESS_SUPPORTED |
+| Lung NSCLC | 0.75 kPa | 2.50 kPa | 0.820 | 55.5x | STIFFNESS_SUPPORTED |
+| Colorectal | 2.61 kPa | 8.70 kPa | 0.800 | 269.5x | PREDICTED |
+| Pancreatic | 1.80 kPa | 6.00 kPa | 0.740 | 310.8x | STIFFNESS_SUPPORTED |
+| Glioblastoma | 0.169 kPa | 0.061 kPa | 0.850 | 26.1x | STIFFNESS_SUPPORTED* |
+| Cervical | 0.44 kPa | 1.26 kPa | 0.800 | 95.7x | STIFFNESS_SUPPORTED |
+| Liver HCC | 1.20 kPa | 3.00 kPa | 0.780 | 190.4x | PREDICTED |
 
 *GBM stiffer than normal brain (Ciesluk 2020 PMC7547774). Stiffness opposes selectivity; water fraction carries selectivity alone.
 
-f_water values derived from ADC literature for 8 types (plus OSCC validated). All 9 types now have complete biophysical parameters. QENS validation pending via Martins/Bordallo collaboration.
+Water fractions (cancer and normal) are assumed values, not measurements (see paper, Section 2.8). ADC-based estimates were explored but are not used by the engine. QENS measurements are pending.
 
 ---
 
@@ -78,7 +78,7 @@ f_water values derived from ADC literature for 8 types (plus OSCC validated). Al
 
 - Optimal OSCC: 0.640 MPa at 450 kHz
 - Therapeutic window: 146.1 kPa
-- Selectivity: 83.5x model vs 88.4x experimental (5.5% error)
+- Selectivity: 83.5x (Layer 2 model) vs 88.4x (earlier S-ASM-CC v5.1 model; internal cross-check, not experimental; 5.5% difference)
 - Collapse temperature: 7321 K air / 16173 K Argon
 - OH radicals per collapse: 87590 (87.6x lethal)
 - Temperature rise: 0.106 K non-thermal confirmed
@@ -115,3 +115,7 @@ Contains S-ASM-CC v5.3 treatment engine and complete preclinical hardware bluepr
 MIT. See LICENSE.
 
 *Dedicated to Ali Sayed Muhammad Osman (1957-2022).*
+
+## Status note (14 October 2026)
+
+All results in this repository are computational model outputs. None has been compared with an experimental selectivity measurement. The OSCC value of 88.38x comes from an earlier version of this model (S-ASM-CC v5.1), so the 83.5x vs 88.4x comparison is an internal consistency check. Free-water fractions are assumed values, not measurements; ADC-based estimates were explored but are not used by the engine. Evidence tiers in the paper are REFERENCE (code label VALIDATED, OSCC only), STIFFNESS-SUPPORTED (code label STIFFNESS_VALIDATED) and PREDICTED.
