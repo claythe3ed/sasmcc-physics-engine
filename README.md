@@ -57,7 +57,7 @@ The cavitation threshold depends primarily on intracellular cytoplasmic viscosit
 | Cervical | 0.44 kPa | 1.26 kPa | 0.800 | 95.7x | STIFFNESS_SUPPORTED |
 | Liver HCC | 1.20 kPa | 3.00 kPa | 0.780 | 190.4x | PREDICTED |
 
-*GBM stiffer than normal brain (Ciesluk 2020 PMC7547774). Stiffness opposes selectivity; water fraction carries selectivity alone.
+*GBM stiffer than normal brain (Ciesluk 2020 PMC7547774). The stiffness term is below 1% of the threshold window, so water fraction carries the selectivity.
 
 Water fractions (cancer and normal) are assumed values, not measurements (see paper, Section 2.8). ADC-based estimates were explored but are not used by the engine. QENS measurements are pending.
 
