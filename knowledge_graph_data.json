@@ -1503,6 +1503,7 @@
       "hooks_passing": true
     },
     "stiffness_validated_count": 8,
-    "predicted_count": 1
+    "predicted_count": 1,
+    "status_notice": "STATUS NOTICE (16 Oct 2026): This file is a development log written before the manuscript was finalised. Fields that say 'validated', 'confirmed' or 'HIGH confidence' refer to consistency with the project's own earlier model (S-ASM-CC v5.1) or to simulation checks. No result has been compared with an experimental selectivity measurement. The water fractions used by the engine are assumed values; the ADC-derived values listed in node ADC_data are not used by the engine. See the manuscript and the README status note."
   }
 }
